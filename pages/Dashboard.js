@@ -31,7 +31,7 @@ const Dashboard = ({navigation}) => {
 
     return (
         <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>   
-            <Text style={styles.petName}>Fido</Text>
+            <Text style={styles.petName}>Griff</Text>
             <View style={styles.container1}>
                 <View style={styles.container2}>
                     <View style={styles.box}>

@@ -12,17 +12,8 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const petName = 'Fido';
-
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator>
-        <Stack.Screen 
-          name="Dashboard"
-          component={Dashboard}
-          options={{title: petName}}
-        />
-      </Stack.Navigator> */}
       <Tab.Navigator initialRouteName="Dashboard">
       <Tab.Screen
           name="Dashboard"
