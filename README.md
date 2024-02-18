@@ -1,5 +1,4 @@
 # PawformancePal
-
 PawformancePal is a mobile application designed to keep your pet healthy and happy through weight management.
 
 ## Table of Contents
@@ -20,7 +19,7 @@ Clone the repository
     `git clone https://github.com/adamdlear/hackathon-pets`
 
 Change directory to the project folder
-    `cd your-project`
+    `cd hackathon-pets`
 
 Install dependencies
     `npm install`
