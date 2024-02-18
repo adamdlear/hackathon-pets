@@ -11,12 +11,13 @@ const InputButton = ({ title }) => {
 
 const styles = StyleSheet.create({
     inputButton: {
-        width: "75%",
-        padding: 6,
+        width: "80%",
+        padding: 10,
         backgroundColor: "#b08cfc",
         borderRadius: 3,
     },
     innerText: {
+        fontSize: 16,
         color: "white",
         fontWeight: "bold",
         textAlign: "center",

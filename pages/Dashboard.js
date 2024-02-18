@@ -1,50 +1,52 @@
-import { Text, View, StyleSheet, SafeAreaView, Pressable } from 'react-native';
-import { ProgressChart } from 'react-native-chart-kit';
+import { Text, View, StyleSheet, SafeAreaView } from 'react-native';
 import InputButton from "../components/InputButton"
+import MyProgressChart from '../components/MyProgressChart';
+import MyLineChart from "../components/MyLineChart";
 
 const Dashboard = ({navigation}) => {
     const foodData = {
         labels: ["Calories"],
         data: [.50]
     }
+
     const exerciseData = {
         data: [.25]
     }
+
+    const lineChartData = {
+        labels: ['Dec', 'Jan', 'Feb'],
+        datasets: [
+            {
+                data: [80, 75, 70],
+                color: (opacity = 1) => `rgba(116, 148, 252, ${opacity})`,
+                withShadow: false,
+            },
+            {
+                data: [30, 45, 60],
+                color: (opacity = 1) => `rgba(168, 136, 255, ${opacity})`,
+            }
+        ],
+        legend: ['Weight (lbs)', 'Calories Burnt']
+    }
+
     return (
         <SafeAreaView style={{backgroundColor: "white", height: "100%"}}>   
             <Text style={styles.petName}>Fido</Text>
-            <View style={styles.container}>
-                <View style={styles.box}>
-                    <Text style={styles.boxHeader}>Food</Text>
-                    <ProgressChart
-                        data={foodData}
-                        width={125}
-                        height={125}
-                        chartConfig={{
-                            backgroundGradientFromOpacity: 0,
-                            backgroundGradientToOpacity: 0,
-                            color: (opacity = 1) => `rgba(116, 148, 252, ${opacity})`,
-                            strokeWidth: 10, // optional, default 3
-                        }}
-                        hideLegend={true}
-                    />
-                    <InputButton title="Input Food"></InputButton>
+            <View style={styles.container1}>
+                <View style={styles.container2}>
+                    <View style={styles.box}>
+                        <Text style={styles.boxHeader}>Food</Text>
+                        <MyProgressChart data={foodData}></MyProgressChart>
+                        <InputButton title="Input Food"></InputButton>
+                    </View>
+                    <View style={styles.box}>
+                        <Text style={styles.boxHeader}>Exercise</Text>
+                        <MyProgressChart data={exerciseData}></MyProgressChart>
+                        <InputButton title="Input Exercise"></InputButton>
+                    </View>
                 </View>
-                <View style={styles.box}>
-                    <Text style={styles.boxHeader}>Exercise</Text>
-                    <ProgressChart
-                        data={exerciseData}
-                        width={125}
-                        height={125}
-                        chartConfig={{
-                            backgroundGradientFromOpacity: 0,
-                            backgroundGradientToOpacity: 0,
-                            color: (opacity = 1) => `rgba(116, 148, 252, ${opacity})`,
-                            strokeWidth: 10, // optional, default 3
-                        }}
-                        hideLegend={true}
-                    />
-                    <InputButton title="Input Exercise"></InputButton>
+                <View style={styles.box2}>
+                    <MyLineChart data={lineChartData}/>
                 </View>
             </View>
         </SafeAreaView> 
@@ -57,22 +59,34 @@ const styles = StyleSheet.create({
         fontSize: 36,
         padding: 25,
     },
-    container: {
+    container1: {
+        marginLeft: 16,
+        marginRight: 16,
+        gap: 22,
+    },
+    container2: {
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-evenly"
+        justifyContent: "center",
+        gap: 16,
     },
     boxHeader: {
-        fontSize: 16,
-        padding: 20,
+        fontSize: 22,
+        paddingTop: 20,
+        paddingBottom: 10,
     },
     box: {
-        height: 300,
-        width: 150,
+        height: 250,
+        width: 170,
         backgroundColor: "lightgray",
         borderRadius: 5,
         alignItems: "center",
     },
+    box2: {
+        alignItems: "center",
+        backgroundColor: "lightgray",
+        borderRadius: 5,
+    }
 })
 
 export default Dashboard;
